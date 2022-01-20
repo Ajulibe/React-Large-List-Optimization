@@ -16,8 +16,10 @@ const View = React.memo(({ item }: ViewProps) => {
 		<div className={styles.editor}>
 			{Object.entries(item).map((value: valueArray) => {
 				return Array.isArray(value[1]) ? null : (
-					// eslint-disable-next-line react/jsx-max-props-per-line
-					<div style={margin} key={value[0]}>
+					<div
+						style={margin}
+						key={value[0]}
+					>
 						<DetailsWrapper
 							property={value[0]}
 							value={value[1]}

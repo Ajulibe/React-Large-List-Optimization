@@ -2,7 +2,7 @@ import React from 'react';
 import styles from 'components/wrapper/styles.module.scss';
 import { Item } from 'types';
 import type { valueArray, InputTypes } from 'types';
-import { useFormField } from './hooks/useFormField';
+import { InputFields } from './components/InputFields';
 
 interface Props {
 	item: Item;
@@ -14,23 +14,22 @@ interface Props {
 	index: number;
 }
 
-const Editor = React.memo(
-	({ item, handleChange, index }: Props) => {
-		const { checkValue } = useFormField();
-
-		return (
-			<div className={styles.editor}>
-				{Object.entries(item).map((value: valueArray) => {
-					return Array.isArray(value[1]) ? null : (
-						<div key={value[0]}>
-							{checkValue(value, handleChange, index)}
-						</div>
-					);
-				})}
-			</div>
-		);
-	},
-	() => true
-);
+const Editor = React.memo(({ item, handleChange, index }: Props) => {
+	return (
+		<div className={styles.editor}>
+			{Object.entries(item).map((value: valueArray) => {
+				return Array.isArray(value[1]) ? null : (
+					<div key={value[0]}>
+						<InputFields
+							value={value}
+							handleChange={handleChange}
+							index={index}
+						/>
+					</div>
+				);
+			})}
+		</div>
+	);
+});
 
 export default Editor;

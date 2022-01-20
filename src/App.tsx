@@ -1,11 +1,12 @@
-/* eslint-disable indent */
 import React, { useState, Suspense } from 'react';
 import info from 'data/newdata.json';
 import { Spinner } from 'components/spinner';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import { Item } from 'types';
+import styles from './index.module.scss';
 
-//--> Lazy loading to help in chunking
+// --> Lazy loading to help in chunking
+
 const Wrapper = React.lazy(() => import('components/wrapper'));
 
 export const centerLoadingIcon = {
@@ -45,16 +46,16 @@ function App() {
 	};
 
 	return (
-		<div>
+		<div className={styles.app}>
 			<InfiniteScroll
 				dataLength={current.length}
 				next={fetchData}
 				hasMore={isMore}
-				loader={
+				loader={(
 					<div style={centerLoadingIcon}>
 						<Spinner />
 					</div>
-				}
+				)}
 			>
 				<div>
 					{current &&
@@ -62,7 +63,7 @@ function App() {
 							return (
 								<div key={`${item.guid}`}>
 									<Suspense
-										fallback={
+										fallback={(
 											<div
 												style={
 													centerLoadingIcon
@@ -70,7 +71,7 @@ function App() {
 											>
 												<Spinner />
 											</div>
-										}
+										)}
 									>
 										<Wrapper
 											item={item}

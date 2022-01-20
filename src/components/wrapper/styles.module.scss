@@ -14,6 +14,21 @@
 	flex-direction: column;
 	padding: 40px;
 	overflow: scroll;
+	border: 1px solid red;
+	width: 50vw;
+	border: 1px solid grey;
+	border-radius: 8px;
+	margin-top: 30px;
+	box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px,
+		rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+
+	@media only screen and (max-width: 980px) {
+		width: 70vw;
+	}
+
+	@media only screen and (max-width: 768px) {
+		padding: 20px;
+	}
 
 	label {
 		font-size: 16px;
@@ -30,5 +45,14 @@
 		font-size: 16px;
 		width: 100%;
 		margin-top: 16px;
+	}
+
+	textarea {
+		min-height: 200px;
+	}
+
+	input[type='radio'] {
+		border: 2px solid grey;
+		align-self: left;
 	}
 }

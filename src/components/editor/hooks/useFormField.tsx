@@ -45,6 +45,7 @@ export const useFormField = () => {
 
 				return validity;
 			};
+			console.log(typeof value[1], 'hook', value[1]);
 
 			switch (typeof value[1]) {
 				case 'string':

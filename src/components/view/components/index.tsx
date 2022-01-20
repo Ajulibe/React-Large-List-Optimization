@@ -8,12 +8,14 @@ interface DetailsWrapperProps {
 export const DetailsWrapper = React.memo(
 	({ property, value }: DetailsWrapperProps) => {
 		return (
-			<div>
+			<div style={{ borderBottom: '1px solid grey' }}>
 				<div>
 					<div
 						style={{
 							fontWeight: 'bold',
 							marginRight: '20px',
+							textTransform: 'uppercase',
+							marginBottom: '20px',
 						}}
 					>
 						{property}

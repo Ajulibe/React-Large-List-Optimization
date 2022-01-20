@@ -24,21 +24,23 @@ const Wrapper = ({ item: obj, index, data: dataInfo }: WrapperProps) => {
 		if (foundItem) {
 			setItem(foundItem);
 		}
+
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
 	const handleChange = React.useCallback(
 		(e: React.ChangeEvent<InputTypes>) => {
-			//--> adjusting view
+			// --> adjusting view
+
 			const newItems = { ...item };
 
 			if (e.target.type === 'number') {
-				newItems[e.target.id] = e.target.value;
+				newItems[e.target.id] = Number(e.target.value);
 			}
 
 			if (e.target.type === 'radio') {
 				newItems[e.target.id] =
-					e.target.value === 'on' ? 'true' : 'false';
+					e.target.value === 'on';
 			}
 
 			if (
@@ -56,13 +58,13 @@ const Wrapper = ({ item: obj, index, data: dataInfo }: WrapperProps) => {
 	);
 
 	return (
-		<div key={`${item?._id}`}>
+		<div>
 			<Suspense
-				fallback={
+				fallback={(
 					<div style={centerLoadingIcon}>
 						<Spinner />
 					</div>
-				}
+				)}
 			>
 				<View item={item} />
 				<Editor
