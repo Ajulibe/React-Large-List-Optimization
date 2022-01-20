@@ -1,0 +1,14 @@
+const newValues = [...data];
+
+			// console.log(e.target.value, 'date');
+
+			// if (e.target.type === 'number') {
+			// 	console.log();
+			// 	newValues[index][e.target.id] = Number(e.target.value);
+			// } else if (e.target.type === 'radio') {
+			// 	newValues[index][e.target.id] = e.target.checked;
+			// } else {
+			// 	newValues[index][e.target.name] = e.target.value;
+			// }
+
+			// setData(newValues);
