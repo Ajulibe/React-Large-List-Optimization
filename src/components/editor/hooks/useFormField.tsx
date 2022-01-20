@@ -1,4 +1,4 @@
-/* eslint-disable indent */
+/* NOT IN USE. disabled for performance reasons  */
 import React from 'react';
 import { emailRegex, dateRegex } from '../utils/utils';
 import type { valueArray, InputTypes } from 'types';
@@ -48,103 +48,103 @@ export const useFormField = () => {
 			console.log(typeof value[1], 'hook', value[1]);
 
 			switch (typeof value[1]) {
-				case 'string':
-					if (value[0] === '_id') {
-						return (
-							<label htmlFor={value[0]}>{value[0]}</label>
-						);
-					}
+			case 'string':
+				if (value[0] === '_id') {
+					return (
+						<label htmlFor={value[0]}>{value[0]}</label>
+					);
+				}
 
-					if (isDate(value[1])) {
-						return (
-							<>
-								<label htmlFor={value[0]}>
-									{value[0]}
-								</label>
-								<input
-									type="date"
-									onChange={onChange}
-									name={value[0]}
-								/>
-							</>
-						);
-					}
-
-					if (isEmail(value[1])) {
-						return (
-							<>
-								<label htmlFor={value[0]}>
-									{value[0]}
-								</label>
-								<input
-									id={value[0]}
-									type="email"
-									defaultValue={value[1]}
-									name={value[0]}
-									onChange={onChange}
-								/>
-							</>
-						);
-					}
-					if (value[1].length > 255) {
-						return (
-							<>
-								<label htmlFor={value[0]}>
-									{value[0]}
-								</label>
-								<textarea
-									id={value[0]}
-									defaultValue={value[1]}
-									name={value[0]}
-									onChange={onChange}
-									rows={10}
-								/>
-							</>
-						);
-					}
-
+				if (isDate(value[1])) {
 					return (
 						<>
-							<label htmlFor={value[0]}>{value[0]}</label>
+							<label htmlFor={value[0]}>
+								{value[0]}
+							</label>
+							<input
+								type="date"
+								onChange={onChange}
+								name={value[0]}
+							/>
+						</>
+					);
+				}
+
+				if (isEmail(value[1])) {
+					return (
+						<>
+							<label htmlFor={value[0]}>
+								{value[0]}
+							</label>
 							<input
 								id={value[0]}
-								type="text"
+								type="email"
 								defaultValue={value[1]}
 								name={value[0]}
 								onChange={onChange}
 							/>
 						</>
 					);
-
-				case 'number':
+				}
+				if (value[1].length > 255) {
 					return (
 						<>
-							<label htmlFor={value[0]}>{value[0]}</label>
-							<input
+							<label htmlFor={value[0]}>
+								{value[0]}
+							</label>
+							<textarea
 								id={value[0]}
-								type="number"
 								defaultValue={value[1]}
 								name={value[0]}
 								onChange={onChange}
+								rows={10}
 							/>
 						</>
 					);
+				}
 
-				case 'boolean':
-					return (
-						<>
-							<label htmlFor={value[0]}>{value[0]}</label>
-							<input
-								id={value[0]}
-								type="radio"
-								defaultChecked={value[1]}
-								onChange={onChange}
-							/>
-						</>
-					);
+				return (
+					<>
+						<label htmlFor={value[0]}>{value[0]}</label>
+						<input
+							id={value[0]}
+							type="text"
+							defaultValue={value[1]}
+							name={value[0]}
+							onChange={onChange}
+						/>
+					</>
+				);
 
-				default:
-					break;
+			case 'number':
+				return (
+					<>
+						<label htmlFor={value[0]}>{value[0]}</label>
+						<input
+							id={value[0]}
+							type="number"
+							defaultValue={value[1]}
+							name={value[0]}
+							onChange={onChange}
+						/>
+					</>
+				);
+
+			case 'boolean':
+				return (
+					<>
+						<label htmlFor={value[0]}>{value[0]}</label>
+						<input
+							id={value[0]}
+							type="radio"
+							defaultChecked={value[1]}
+							onChange={onChange}
+						/>
+					</>
+				);
+
+			default:
+				break;
 			}
 
 			return null;

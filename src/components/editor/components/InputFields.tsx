@@ -24,9 +24,10 @@ export const InputFields = ({ value, handleChange, index }: Props) => {
 		}
 	}, [value]);
 
-	const onChange = (e: React.ChangeEvent<InputTypes>) => {
-		handleChange(e, index, value);
-	};
+	const onChange =
+		(e: React.ChangeEvent<InputTypes>) => {
+			handleChange(e, index, value);
+		};
 
 	const isDate = (value: string) => {
 		let validity;
@@ -116,6 +117,7 @@ export const InputFields = ({ value, handleChange, index }: Props) => {
 						name={value[0]}
 						onChange={onChange}
 					/>
+
 				</>
 			)}
 
